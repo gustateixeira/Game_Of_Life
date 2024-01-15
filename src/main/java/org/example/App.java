@@ -12,11 +12,10 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        int[][] arr = make(10,10);
+        int[][] arr = make(5,5);
         printArr(arr);
-        int[][] next = make(10,10);
         System.out.println();
-        printArr(next);
+        System.out.println(countNeighbors(arr, 3,3));
     }
 
     public static int [][] make(int cols, int rows){
@@ -30,24 +29,15 @@ public class App
         return arr;
     }
     public static void printArr(int[][] arr){
-        for(int i = 0; i < arr.length; i++){
-            System.out.println(Arrays.toString(arr[i]));
+        for (int[] ints : arr) {
+            System.out.println(Arrays.toString(ints));
         }
     }
     public static void life(int [][] arr){
         int[][] nextArr = make(10,10);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                int count = countNeighbors(arr);
-//                int sum = 0;
-//                sum+= nextArr [i-1][j - 1];
-//                sum+= nextArr [i-1][j];
-//                sum+= nextArr [i-1][j + 1];
-//                sum+= nextArr [i][j - 1];
-//                sum+= nextArr [i][j + 1];
-//                sum+= nextArr [i+1][j - 1];
-//                sum+= nextArr [i+1][j];
-//                sum+= nextArr [i+1][j + 1];
+                int count = countNeighbors(arr,i,j);
 
 
             }
@@ -56,10 +46,15 @@ public class App
     }
     public static int countNeighbors(int[][] arr, int x,int y){
         int sum = 0;
-        for (int i = 0;i < 2; i++){
-            for(int j = 0; j < 2; j++){
-                sum += arr [i][j];
+        if(x != 0 && y!= 0) {
+            for (int i = x - 1; i <= x + 1; i++) {
+                for (int j = y - 1; j <= y + 1; j++) {
+                    sum += arr[i][j];
+                }
             }
+        }
+        else{
+
         }
         sum -= arr[x][y];
         return sum;

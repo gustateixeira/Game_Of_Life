@@ -1,38 +1,22 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import static org.example.App.*;
+import static org.junit.Assert.assertEquals;
+
+public class AppTest {
+    int[][] arr = make(5,5);
+
+    @Test
+    public void countNeighborsTest(){
+        int expected = countNeighbors(arr,3,3);
+        int actual = 2;
+        assertEquals(expected,actual);
+    }
+    @Test
+    public void printArrTest(){
+        printArr(arr);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
